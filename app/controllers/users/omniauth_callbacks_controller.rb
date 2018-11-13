@@ -19,7 +19,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
   end
 
+   # 認証成功後リダイレクト先URL
   def after_sign_in_path_for(resource)
     "/"
-   end
+  end
 end
