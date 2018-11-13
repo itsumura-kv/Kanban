@@ -9,7 +9,7 @@ URL
 ## ログイン・新規登録画面
 |説明|メソッド|URI|コントローラー|
 |:---:|:---|:---|:---|
-|表示|GET|/login|user#new|
+|表示|GET|/login/index|login#index|
 |DB登録|POST|/login/create|user#create|
 |ログイン|POST|/session/create|session#create|
 |成功後リダイレクト|GET|/|root#index|
