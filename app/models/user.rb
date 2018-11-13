@@ -12,6 +12,7 @@
 #  remember_created_at    :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  name                   :string
 #
 
 class User < ApplicationRecord
@@ -29,13 +30,18 @@ class User < ApplicationRecord
   has_many :users, through: :invitations, foreign_key: :invitee
 
   def self.find_for_oauth(auth)
-    raise
     user = User.where(uid: auth.uid, provider: auth.provider).first
  
     unless user
+      # 画像を取得して保存
+      require 'open-uri'
+      download = open(auth.info.image)
+      IO.copy_stream(download, "public/img/profile/#{auth.uid}.jpg")
+
       user = User.create(
         uid:      auth.uid,
         provider: auth.provider,
+        name:     auth.info.name,
         email:    auth.info.email,
         password: Devise.friendly_token[0, 20]
       )
