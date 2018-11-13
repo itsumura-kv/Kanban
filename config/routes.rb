@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'mypage/edit'
+  get 'mypage/update'
+  get 'mypage/destroy'
   get 'login/index'
   root 'root#index'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
