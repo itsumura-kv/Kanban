@@ -1,18 +1,38 @@
 <div id="mypage-index-form">
   <div class="row">
     <div class="col-5">
-        <img src="/img/ruby.jpg" alt="..." class="rounded-circle mypage-index-img">
+      <%= image_tag("/img/profile/#{current_user.uid}.jpg", :id => "preview",:class => "ounded-circle mypage-index-img") %>
     </div>
     <div class="col-7">
-      <div class="form-group">
-        <form>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="名前">
-          <input type="file" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        </form>     
-      </div>
-      <p><button type="submit" class="btn btn-primary">更新</button></p>
+      <form action="/mypage/update" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
+        <div class="form-group">
+            <%= text_field_tag 'inputName', current_user.name, class: "form-control", id: "inputName", placeholder: "名前" %>
+            <input type="file" class="form-control" id="inputImage" name="inputImage" placeholder="アイコン" onChange="previewImage()">
+            <p><button type="submit" class="btn btn-primary">更新</button></p>
+        </div>
+      </form>
       <%= button_to 'ログアウト', destroy_user_session_path, :class => 'btn btn-primary', method: :delete %>
-      <button type="submit" class="btn btn-primary">退会</button>
+      <%= button_to '退会', "/users", :class => 'btn btn-primary', method: :delete %>
     </div>
   </div>
 </div>
+
+<script>
+  function previewImage() {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    let preview = document.getElementById("preview");
+    let previewImage = document.getElementById("previewImage");
+    
+    if(previewImage != null){
+      preview.removeAttribute("src");
+    }
+  
+    reader.onload = function(event) {
+      preview.setAttribute("src", reader.result);
+    };
+  
+    reader.readAsDataURL(file);
+  }
+</script>

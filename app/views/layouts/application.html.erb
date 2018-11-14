@@ -31,19 +31,20 @@
       <!--右詰-->
       <div class="form-inline">
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <% if !user_signed_in? %>
+          <% if !user_signed_in? %>
+            <li class="nav-item">
               <a class="nav-link" href="/login/index">ログイン</a>
-            <% end %>
-          </li>
-          <li class="nav-item btn btn-warning">
-            <a href="#">通知 <span class="badge badge-light">4</span></a>
-          </li>
-          <li class="nav-item">
-            <a href='/mypage/edit'>
-              <img src="/img/ruby.jpg" alt="..." class="rounded-circle" width="40" height="40">
-            </a>
-          </li>
+            </li>
+          <% else %>
+            <li class="nav-item btn btn-warning">
+              <a href="#">通知 <span class="badge badge-light">4</span></a>
+            </li>
+            <li class="nav-item">
+              <a href='/mypage/edit'>
+                <%= image_tag("/img/profile/#{current_user.uid}.jpg", :size => "40x40", :class => "rounded-circle") %>
+              </a>
+            </li>
+          <% end %>
         </ul>
       </div>
 

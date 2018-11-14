@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'mypage/edit'
-  get 'mypage/update'
+  post 'mypage/update' => 'mypage#update'
   get 'mypage/destroy'
   get 'login/index'
   root 'root#index'

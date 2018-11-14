@@ -3,5 +3,6 @@ class RootController < ApplicationController
     puts user_session
     puts user_signed_in?
     puts current_user
+    #raise
   end
 end
