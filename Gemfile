@@ -56,6 +56,11 @@ group :development, :test do
   # 画面上でデバッグ
   gem 'better_errors'
   gem 'binding_of_caller'
+
+  # 画像保存
+  # bin/spring stop
+  # bundle exec rails g uploader profile_image
+  gem 'carrierwave'
 end
 
 group :development do

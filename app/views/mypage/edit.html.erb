@@ -1,10 +1,10 @@
 <div id="mypage-index-form">
   <div class="row">
     <div class="col-5">
-      <%= image_tag("/img/profile/#{current_user.uid}.jpg", :id => "preview",:class => "ounded-circle mypage-index-img") %>
+      <%= image_tag("/img/profile/#{current_user.image_path}", :id => "preview",:class => "ounded-circle mypage-index-img") %>
     </div>
     <div class="col-7">
-      <form action="/mypage/update" method="post">
+      <form action="/mypage/update" method="post" enctype="multipart/form-data">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
         <div class="form-group">
             <%= text_field_tag 'inputName', current_user.name, class: "form-control", id: "inputName", placeholder: "名前" %>

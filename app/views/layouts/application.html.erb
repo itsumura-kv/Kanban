@@ -41,7 +41,7 @@
             </li>
             <li class="nav-item">
               <a href='/mypage/edit'>
-                <%= image_tag("/img/profile/#{current_user.uid}.jpg", :size => "40x40", :class => "rounded-circle") %>
+                <%= image_tag("/img/profile/#{current_user.image_path}", :size => "40x40", :class => "rounded-circle") %>
               </a>
             </li>
           <% end %>

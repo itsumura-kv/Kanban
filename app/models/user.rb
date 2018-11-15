@@ -13,6 +13,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  name                   :string
+#  image_path             :string
 #
 
 class User < ApplicationRecord
@@ -33,17 +34,19 @@ class User < ApplicationRecord
     user = User.where(uid: auth.uid, provider: auth.provider).first
  
     unless user
-      # 画像を取得して保存
+      # FBから画像を取得して保存
       require 'open-uri'
       download = open(auth.info.image)
-      IO.copy_stream(download, "public/img/profile/#{auth.uid}.jpg")
+      new_image_name = "#{auth.uid}.jpg"
+      IO.copy_stream(download, "public/img/profile/#{new_image_name}")
 
       user = User.create(
-        uid:      auth.uid,
-        provider: auth.provider,
-        name:     auth.info.name,
-        email:    auth.info.email,
-        password: Devise.friendly_token[0, 20]
+        uid:        auth.uid,
+        provider:   auth.provider,
+        name:       auth.info.name,
+        email:      auth.info.email,
+        password:   Devise.friendly_token[0, 20],
+        image_path: new_image_name
       )
     end
  
