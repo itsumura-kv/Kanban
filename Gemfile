@@ -61,6 +61,10 @@ group :development, :test do
   # bin/spring stop
   # bundle exec rails g uploader profile_image
   gem 'carrierwave'
+
+  # DB初期データ
+  # bundle exec rails db:seed_fu
+  gem 'seed-fu', '~> 2.3'
 end
 
 group :development do

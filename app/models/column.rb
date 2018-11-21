@@ -12,5 +12,5 @@
 class Column < ApplicationRecord
   belongs_to :project
 
-  has_many :cards
+  has_many :cards, -> { order(id: :asc) }
 end

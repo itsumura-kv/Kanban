@@ -1,0 +1,15 @@
+<div class="card project-new-card">
+  <div class="card-header">
+    新しいプロジェクトを作成
+  </div>
+  <div class="card-body">
+    <%= form_for @project, url: '/project/create', html: {class: 'form-horizontal'} do |f| %>
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
+      <p>プロジェクト名</p>
+      <%= f.text_field :title, class: 'form-control' %>
+      <p>概要</p>
+      <%= f.text_area :content, class: 'form-control project-new-textarea' %>
+      <p><button type="submit" class="btn btn-primary">作成</button></p>
+    <% end %>
+  </div>
+</div>

@@ -15,6 +15,10 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string    :uid
       t.string    :provider
 
+      ## オプション
+      t.string    :name
+      t.string    :image_path
+
       ## Rememberable
       t.datetime :remember_created_at
 

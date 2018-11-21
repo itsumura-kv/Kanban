@@ -30,6 +30,8 @@ class User < ApplicationRecord
   has_one :user, through: :invitations, foreign_key: :inviter
   has_many :users, through: :invitations, foreign_key: :invitee
 
+  has_many :projects, foreign_key: :admin_user
+
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
  

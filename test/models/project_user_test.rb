@@ -3,7 +3,6 @@
 # Table name: project_users
 #
 #  id         :bigint(8)        not null, primary key
-#  auth_flag  :boolean
 #  project_id :bigint(8)
 #  user_id    :bigint(8)
 #  created_at :datetime         not null

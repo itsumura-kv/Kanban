@@ -43,12 +43,13 @@ bundle exec rails g migration AddColumnsToUsers uid:string provider:string
 |id|int|---|---|---|---|
 |title|string|---|---|プロジェクト名|---|
 |content|text|---|---|概要|---|
+|admin_user_id|int|---|---|管理者ID|---|
 
 title:140字
 content:300字
 
 ```
-bundle exec rails g model Project title:string content:text
+bundle exec rails g model Project title:string content:text admin_user_id:int
 ```
 
 ## プロジェクト - ユーザー 中間テーブル
@@ -59,12 +60,11 @@ bundle exec rails g model Project title:string content:text
 |英語名|型|null許可|ユニーク|説明|外部キー|
 |:---:|:---:|:---:|:---:|:---:|:---:|
 |id|int|---|---|---|---|
-|auth_flag|bool|---|---|プロジェクト管理者フラグ|---|
 |project_id|int|---|---|---|Project.id|
 |user_id|int|---|---|---|User.id|
 
 ```
-bundle exec rails g model ProjectUser auth_flag:boolean project:references user:references
+bundle exec rails g model ProjectUser project:references user:references
 ```
 
 ## カラム

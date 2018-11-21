@@ -1,0 +1,15 @@
+<div class="card project-new-card">
+  <div class="card-header">
+    プロジェクトを編集
+  </div>
+  <div class="card-body">
+    <%= form_for @project, url: "/project/#{@project.id}/update" do |f| %>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
+    <p>プロジェクト名</p>
+    <%= f.text_field :title, value: @project.title, class: 'form-control' %>
+    <p>概要</p>
+    <%= f.text_area :content, value: @project.content, class: 'form-control project-new-textarea' %>
+    <p><button type="submit" class="btn btn-primary">編集</button> <button type="submit" class="btn btn-primary">削除</button></p>
+  <% end %>
+  </div>
+</div>

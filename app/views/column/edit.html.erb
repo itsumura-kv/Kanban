@@ -1,0 +1,14 @@
+<div class="card project-new-card">
+  <div class="card-header">
+    カラムを編集
+  </div>
+  <div class="card-body">
+    <%= form_for @column, url: "/column/#{@column.id}/update", html: {class: 'form-horizontal'} do |f| %>
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
+      <p> カラム名</p>
+      <%= f.text_field :title, value: @column.title, name: 'title', class: 'form-control' %>
+      <%= button_to '編集', "/column/#{@column.id}/update", :class => 'btn btn-primary', method: :patch %>
+    <% end %>
+    <%= button_to '削除', "/column/#{@column.id}/", :class => 'btn btn-danger', method: :delete %>
+  </div>
+</div>

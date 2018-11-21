@@ -61,3 +61,26 @@
     width: 100%;
     height: 100%;
   }
+
+  /* project */
+  .project-index-ui {
+    margin: auto;
+    margin-top: 10vh;
+    width: 70vw;
+    height: 70vh;
+  }
+
+  .project-new-card {
+    margin: auto;
+    margin-top: 10vh;
+    width: 70vw;
+    height: 70vh;
+  }
+
+  .project-new-textarea {
+    min-height: 13em !important;
+  }
+
+  .project-show-card {
+    min-height: 80vh;
+  }

@@ -1,0 +1,21 @@
+<div class="card project-new-card">
+  <div class="card-header">
+    新しいカードを作成
+  </div>
+  <div class="card-body">
+    <%= form_for(@card, url: "/card/create?column_id=#{@column_id}", html: {class: 'form-horizontal'}) do |f| %>
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
+      <p>カード名</p>
+      <%= f.text_field :title, class: 'form-control' %>
+      <p>期限</p>
+      <%= date_field :card, :due_date, value: Date.today.strftime("%Y-%m-%d") %>
+      <p>担当者</p>
+      <select name="[card]user_id">
+        <% @users.each do |user| %>
+          <option value="<%= user.id %>"><%= user.name %></option>
+        <% end %>
+      </select>
+      <p><button type="submit" class="btn btn-primary">作成</button></p>
+    <% end %>
+  </div>
+</div>
